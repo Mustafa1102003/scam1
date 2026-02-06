@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valentine?</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      max-width: 90%;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #ff4d6d;
+    }
+
+    #buttons {
+      position: relative;
+      height: 160px;
+    }
+
+    #yes {
+      font-size: 36px;
+      padding: 22px 50px;
+      border-radius: 18px;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #yes:hover {
+      transform: scale(1.15);
+    }
+
+    #no {
+      position: absolute;
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      border: none;
+      background: #bbb;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .love-screen {
+      animation: fadeIn 1s ease-in;
+    }
+
+    .love-screen p {
+      font-size: 22px;
+      color: #444;
+      margin-top: 10px;
+    }
+
+    .love-screen img {
+      max-width: 320px;
+      width: 100%;
+      border-radius: 25px;
+      margin-top: 25px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="question">
+    <h1>Hey Isobelle,<br>will you be my Valentine? 💘</h1>
+    <div id="buttons">
+      <button id="yes">YES 💖</button>
+      <button id="no">no</button>
+    </div>
+  </div>
+
+  <div class="card hidden" id="love">
+    <div class="love-screen">
+      <h1>I love you ❤️</h1>
+      <p>I love you, and I look forward to seeing your face</p>
+      <img src="us.jpg" alt="Us together">
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const question = document.getElementById("question");
+    const love = document.getElementById("love");
+
+    function moveNoButton() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("click", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+      question.classList.add("hidden");
+      love.classList.remove("hidden");
+    });
+  </script>
+
+</body>
+</html>
